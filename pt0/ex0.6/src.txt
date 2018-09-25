@@ -1,0 +1,23 @@
+kayttaja->selain:
+
+note left of selain
+käyttäjä kirjottaa lomakkeen tekstikenttään uuden 
+muistiinpanon ja painaa Talleta-painiketta
+end note
+note right of selain
+lomakkeeseen Javascriptillä liitetty tapahtumankäsittelijä:
+1. lisää uuden muistiinpanon taulukkoon 
+2. käskee selainta piirtämään muistiinpanolistan uudelleen
+3. lähettää uuden muistiinpanon palvelimelle JSON-muodossa
+end note
+
+selain->palvelin: POST fullstack-exampleapp.herokuapp.com/new_note_spa
+note left of palvelin
+palvelin luo tiedon perusteella uuden muistiinpanon ja lisää 
+sen muistiinpanot sisältävään taulukkoon
+end note
+palvelin->selain: status 201, vahvistus uuden resurssin luomisesta
+
+note left of selain
+selain näyttää HTML:n muotoiluineen ja lisäyksineen käyttäjälle
+end note

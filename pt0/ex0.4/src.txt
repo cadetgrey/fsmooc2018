@@ -1,0 +1,42 @@
+﻿kayttaja->selain:
+note left of selain
+käyttäjä kirjottaa lomakkeen tekstikenttään uuden 
+muistiinpanon ja painaa Talleta-painiketta
+end note
+note right of selain
+selain lähettää lomakkeen tiedot palvelimelle:
+end note
+selain->palvelin: POST fullstack-exampleapp.herokuapp.com/new_note
+note left of palvelin
+palvelin luo tiedon perusteella uuden muistiinpanon ja lisää 
+sen muistiinpanot sisältävään taulukkoon
+end note
+palvelin->selain: status 302, uudelleenohjaus ~/notes
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/notes
+palvelin->selain: status 200, kaikki sivun tiedostot toistamiseen
+
+note left of selain
+selain näyttää palvelimen palauttaman HTML:n
+palvelimen palauttamana CSS-tyylitiedoston
+mukaisesti muotoiltuna
+end note
+
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/main.js
+palvelin->selain: status 200, Javascript-koodi
+
+note right of selain
+selain suorittaa lataamansa Javascript-koodin
+end note
+
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/data.json
+palvelin->selain: status 200, JSON-tiedosto
+note right of selain
+selain luo vastaanotetun JSON-datan (joka nyt perustuu
+päivitettyyn taulukkoon muistiinpanoista) perusteella 
+listamuotoisen näkymän muistiinpanoista ja liittää sen 
+DOM:in avulla olemassaolevaan HTML-koodiin
+end note
+
+note left of selain
+selain näyttää HTML:n muotoiluineen ja lisäyksineen käyttäjälle
+end note
